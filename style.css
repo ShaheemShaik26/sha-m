@@ -1,0 +1,213 @@
+/* --- GLOBAL STYLES & VARIABLES --- */
+:root {
+    --primary-violet: #8A2BE2; /* Blue Violet */
+    --glow-violet: #9400D3;   /* Dark Violet for glow */
+    --dark-bg: #0d0d0d;
+    --dark-card: #1a1a1a;
+    --light-text: #e0e0e0;
+    --futuristic-font: 'Orbitron', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* --- SCROLL SNAPPING SETUP (RESTORED) --- */
+html {
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--dark-bg);
+    color: var(--light-text);
+    font-family: var(--futuristic-font);
+    overflow-x: hidden;
+}
+
+/* --- ANIMATED BACKGROUND --- */
+#particles-js {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.content {
+    position: relative;
+    z-index: 1;
+}
+
+/* --- GENERAL SECTION STYLING --- */
+.section {
+    padding: 60px 10%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    scroll-snap-align: start;
+    position: relative;
+}
+
+.section-title {
+    font-size: 3rem;
+    margin-bottom: 60px;
+    text-transform: uppercase;
+    font-weight: 900;
+    color: #ffffff;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.3),
+                 0 0 15px var(--glow-violet),
+                 0 0 25px var(--glow-violet);
+}
+
+/* --- HOME / HERO SECTION --- */
+#home .hero-content {
+    text-align: center;
+    max-width: 800px;
+}
+
+.profile-pic {
+    width: 160px; /* Smaller size */
+    height: 160px; /* Smaller size */
+    margin: 0 auto 20px auto;
+    border-radius: 50%;
+    /* 
+    ==================================================================
+    vvv   IMPORTANT: THIS IS WHERE YOU SET YOUR PROFILE PICTURE   vvv
+    ==================================================================
+    The path inside url() MUST be correct for your image to show up.
+    This method guarantees it will perfectly fill the circle.
+    
+    Examples:
+    background-image: url('img/my-photo.jpg');
+    background-image: url('img/mama-mia.png');
+    */
+    background-image: url('img/gojoo.jpeg');
+    
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* 
+    ==================================================================
+    ^^^          END OF PROFILE PICTURE INSTRUCTION          ^^^
+    ==================================================================
+    */
+    border: 4px solid var(--primary-violet);
+    box-shadow: 0 0 15px var(--primary-violet), 
+                0 0 25px var(--primary-violet), 
+                inset 0 0 10px rgba(138, 43, 226, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-pic:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px var(--glow-violet), 
+                0 0 40px var(--glow-violet), 
+                inset 0 0 15px rgba(148, 0, 211, 0.7);
+}
+
+.name-title {
+    font-size: 4.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.email a { color: var(--light-text); text-decoration: none; font-size: 1.2rem; transition: color 0.3s, text-shadow 0.3s; }
+.email a:hover { color: var(--primary-violet); text-shadow: 0 0 8px var(--primary-violet); }
+
+.social-icons { margin: 20px 0; }
+.social-icons a { color: var(--light-text); font-size: 1.8rem; margin: 0 15px; transition: color 0.3s, transform 0.3s, text-shadow 0.3s; }
+.social-icons a:hover { color: var(--primary-violet); transform: scale(1.2); text-shadow: 0 0 10px var(--primary-violet); }
+.about-me { font-size: 1.1rem; line-height: 1.6; max-width: 600px; margin: 20px auto 0; color: rgba(224, 224, 224, 0.8); }
+
+.scroll-down-indicator { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); font-size: 2rem; color: var(--primary-violet); animation: bounce 2s infinite; }
+@keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); } 40% { transform: translateY(-15px) translateX(-50%); } 60% { transform: translateY(-8px) translateX(-50%); } }
+
+/* --- PROJECTS & SKILLS (No changes) --- */
+.projects-grid { display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; }
+.project-card { background: var(--dark-card); border: 1px solid rgba(138, 43, 226, 0.3); border-radius: 10px; padding: 30px; width: 350px; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.project-card:hover { transform: translateY(-10px); box-shadow: 0 0 20px var(--glow-violet); }
+.project-card h3 { color: #ffffff; text-shadow: 0 0 5px var(--glow-violet), 0 0 10px var(--glow-violet); margin-bottom: 15px; font-size: 1.5rem; }
+.project-card p { font-size: 1rem; line-height: 1.5; margin-bottom: 20px; }
+.project-link { color: var(--primary-violet); text-decoration: none; font-weight: bold; transition: color 0.3s; }
+.project-link:hover { text-decoration: underline; }
+.skills-container { display: flex; flex-wrap: wrap; gap: 40px; width: 100%; max-width: 1000px; justify-content: center; }
+.skill-category { flex-basis: 45%; min-width: 300px; }
+.skill-category h4 { font-size: 1.4rem; color: #ffffff; text-shadow: 0 0 5px var(--glow-violet), 0 0 10px var(--glow-violet); margin-bottom: 20px; border-bottom: 1px solid rgba(138, 43, 226, 0.5); padding-bottom: 10px; }
+.skill-tag { display: inline-block; background: rgba(138, 43, 226, 0.1); border: 1px solid var(--primary-violet); color: var(--light-text); padding: 8px 15px; margin: 5px; border-radius: 5px; font-size: 0.9rem; transition: background-color 0.3s, box-shadow 0.3s; }
+.skill-tag:hover { background: var(--primary-violet); color: #fff; box-shadow: 0 0 10px var(--primary-violet); }
+
+/* --- CREATIVE PURSUITS WITH STABLE CSS FLOAT --- */
+.creative-content { display: flex; align-items: center; justify-content: center; gap: 5%; width: 100%; max-width: 1400px; }
+.hobbies-container { flex-basis: 45%; }
+.hobbies-container .section-title { text-align: left; margin-bottom: 30px; }
+.hobbies-list { display: flex; flex-wrap: wrap; gap: 15px; justify-content: flex-start; }
+.hobby-item { font-size: 1.1rem; padding: 10px 20px; background-color: var(--dark-card); border: 1px solid rgba(138, 43, 226, 0.4); border-radius: 5px; transition: background-color 0.3s, color 0.3s, box-shadow 0.3s; cursor: default; }
+.hobby-item:hover { background-color: var(--primary-violet); color: var(--dark-bg); box-shadow: 0 0 15px var(--glow-violet); }
+
+/* The container is now a CSS Grid to prevent any overlap */
+.floating-image-container {
+    flex-basis: 50%;
+    height: 60vh;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.image-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: gentle-float 10s ease-in-out infinite;
+}
+
+.image-wrapper img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 10px;
+    border: 2px solid var(--primary-violet);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5), 0 0 15px var(--glow-violet);
+}
+
+/* Keyframes for the gentle float animation */
+@keyframes gentle-float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+/* Manually place each image wrapper into a specific grid cell */
+.image-wrapper:nth-child(1) { grid-column: 1 / 3; grid-row: 2 / 4; animation-duration: 8s; }
+.image-wrapper:nth-child(2) { grid-column: 3 / 5; grid-row: 1 / 3; animation-duration: 12s; animation-delay: -2s; }
+.image-wrapper:nth-child(3) { grid-column: 2 / 4; grid-row: 3 / 5; animation-duration: 9s; animation-delay: -4s; }
+.image-wrapper:nth-child(4) { grid-column: 1 / 2; grid-row: 1 / 2; }
+.image-wrapper:nth-child(5) { grid-column: 4 / 5; grid-row: 3 / 4; animation-duration: 11s; animation-delay: -1s; }
+.image-wrapper:nth-child(6) { grid-column: 1 / 2; grid-row: 4 / 5; animation-duration: 7s; animation-delay: -3s; }
+.image-wrapper:nth-child(7) { grid-column: 4 / 5; grid-row: 4 / 5; animation-duration: 13s; animation-delay: -5s; }
+
+
+/* --- RESPONSIVE DESIGN --- */
+@media (max-width: 900px) {
+    .creative-content { flex-direction: column-reverse; }
+    .hobbies-container .section-title { text-align: center; }
+    .hobbies-list { justify-content: center; }
+    .floating-image-container { height: 40vh; width: 100%; margin-top: 40px; }
+}
+
+@media (max-width: 768px) {
+    .section { height: auto; min-height: 100vh; }
+    html { scroll-snap-type: y proximity; /* Looser snap on mobile */ }
+    .section-title { font-size: 2.5rem; }
+    .name-title { font-size: 3rem; }
+    .profile-pic { width: 150px; height: 150px; }
+    .projects-grid, .skills-container { flex-direction: column; align-items: center; }
+    .project-card, .skill-category { width: 90%; max-width: 400px; }
+}
